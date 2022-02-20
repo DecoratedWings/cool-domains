@@ -1,15 +1,6 @@
-# Basic Sample Hardhat Project
+# Polygon Lit Domains Project 
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+This project mints '.lit' 🔥 domains on the polygon side chain.
+Domains can be permanent or temporary. Temporary domains are referred to as 'launch domains'. The use case may be for NFT product launches, websites for temporary mint list user exclusives, etc.
 
-Try running some of the following tasks:
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
