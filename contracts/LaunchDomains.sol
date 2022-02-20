@@ -5,7 +5,6 @@ pragma solidity ^0.8.10;
 import './DomainBase.sol';
 
 contract LaunchDomains is DomainBase {
-
 	// Magic given to us by OpenZeppelin to help us keep track of tokenIds.
 	using Counters for Counters.Counter;
 	Counters.Counter private _tokenIds;

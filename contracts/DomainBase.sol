@@ -36,7 +36,7 @@ abstract contract DomainBase is ERC721URIStorage {
 
 	function register(string calldata name) public payable virtual {}
 
-    function registerLaunchDomain(string calldata name, uint numberOfDays) public payable virtual {}
+	function registerLaunchDomain(string calldata name, uint256 numberOfDays) public payable virtual {}
 
 	function getAddress(string calldata name) public view returns (address) {
 		// Check that the owner is the transaction sender
