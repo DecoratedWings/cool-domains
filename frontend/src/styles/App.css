@@ -104,7 +104,17 @@
   }
   
   .mint-button {
-    background: -webkit-linear-gradient(left, #a200d6, #ff6fdf);
+    background: -webkit-linear-gradient(left, red, orange);
+    font-size: 18px;
+    background-size: 200% 200%;
+    animation: gradient-animation 4s ease infinite;
+    margin: 20px 10px;
+    border-radius: 20px;
+    padding: 0px 2rem;
+  }
+
+  .mint-launch-button {
+    background: -webkit-linear-gradient(left, black, silver);
     font-size: 18px;
     background-size: 200% 200%;
     animation: gradient-animation 4s ease infinite;

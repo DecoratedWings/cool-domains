@@ -28,6 +28,7 @@ contract LaunchDomains is DomainBase {
 	LaunchDomain[] public launchDomains;
 
 	constructor(string memory _tld) payable ERC721('Lit Name Service', 'LNS') {
+        owner = payable(msg.sender);
 		tld = _tld;
 		console.log('%s name service deployed', _tld);
 	}

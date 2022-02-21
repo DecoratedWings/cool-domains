@@ -17,7 +17,8 @@ contract Domains is DomainBase {
 	string svgPartTwo = '</text></svg>';
 
 	constructor(string memory _tld) payable ERC721('Lit Name Service', 'LNS') {
-		tld = _tld;
+		owner = payable(msg.sender);
+        tld = _tld;
 		console.log('%s name service deployed', _tld);
 	}
 

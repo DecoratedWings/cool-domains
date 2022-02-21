@@ -6,7 +6,6 @@ import domainsABI from './utils/Domains.json';
 import launchDomainsABI from './utils/LaunchDomains.json';
 import domainBaseABI from './utils/DomainBase.json';
 
-
 // Constants
 const TWITTER_HANDLE = '_buildspace';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
@@ -95,6 +94,7 @@ const App = () => {
   
         // Check if the transaction was successfully completed
         if (receipt.status === 1) {
+     
           console.log("Domain minted! https://mumbai.polygonscan.com/tx/"+tx.hash);
           
           // Set the record for the domain
@@ -152,9 +152,15 @@ const App = () => {
 					<button className='cta-button mint-button' disabled={null} onClick={mintDomain}>
 						Mint
 					</button>  
-					<button className='cta-button mint-button' disabled={null} onClick={null}>
+					{/* <button className='cta-button mint-button' disabled={null} onClick={null}>
 						Set data
+					</button>   */}
+
+          {/*TODO: ADD MINT LAUNCH DOMAIN METHOD*/}
+          <button className='cta-button mint-launch-button' disabled={null} onClick={null}>
+						Mint Launch Domain
 					</button>  
+
 				</div>
 
 			</div>
@@ -174,7 +180,7 @@ const App = () => {
 					<header>
             <div className="left">
               <p className="title">🔥 Lit Name Service 🔥</p>
-              <p className="subtitle">Your immortal API on the blockchain!</p>
+              <p className="subtitle">~ Mint a Fire Domain on he Blockchain~</p>
             </div>
 					</header>
 				</div>

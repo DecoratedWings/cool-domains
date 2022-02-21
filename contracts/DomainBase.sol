@@ -20,6 +20,8 @@ abstract contract DomainBase is ERC721URIStorage {
 	// Checkout our new mapping! This will store values
 	mapping(string => string) public records;
 
+	address payable public owner;
+
 	// This function will give us the price of a domain based on length
 	//Shorter domains are more expensive!
 	function price(string calldata name) public pure returns (uint256) {
@@ -37,6 +39,22 @@ abstract contract DomainBase is ERC721URIStorage {
 	function register(string calldata name) public payable virtual {}
 
 	function registerLaunchDomain(string calldata name, uint256 numberOfDays) public payable virtual {}
+
+	modifier onlyOwner() {
+		require(isOwner());
+		_;
+	}
+
+	function isOwner() public view returns (bool) {
+		return msg.sender == owner;
+	}
+
+	function withdraw() public onlyOwner {
+		uint256 amount = address(this).balance;
+
+		(bool success, ) = msg.sender.call{ value: amount }('');
+		require(success, 'Failed to withdraw Matic');
+	}
 
 	function getAddress(string calldata name) public view returns (address) {
 		// Check that the owner is the transaction sender
