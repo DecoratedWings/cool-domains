@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import './styles/App.css';
 import twitterLogo from './assets/twitter-logo.svg';
 import { ethers } from "ethers";
+import domainsABI from './utils/Domains.json';
+import launchDomainsABI from './utils/LaunchDomains.json';
+import domainBaseABI from './utils/DomainBase.json';
+
 
 // Constants
 const TWITTER_HANDLE = '_buildspace';
@@ -82,7 +86,7 @@ const App = () => {
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
-        const contract = new ethers.Contract(CONTRACT_ADDRESS, contractAbi.abi, signer);
+        const contract = new ethers.Contract(CONTRACT_ADDRESS, domainsABI.abi, signer);
   
         console.log("Going to pop wallet now to pay gas...")
         let tx = await contract.register(domain, {value: ethers.utils.parseEther(price)});
