@@ -8,6 +8,7 @@ import { networks } from './utils/networks';
 import domainsABI from './utils/Domains.json';
 import launchDomainsABI from './utils/LaunchDomains.json';
 import domainBaseABI from './utils/DomainBase.json';
+import InfoModal from './InfoModal.js';
 
 // Constants
 const TWITTER_HANDLE = '_buildspace';
@@ -28,6 +29,7 @@ const App = () => {
   const [domain, setDomain] = useState('');
   const [record, setRecord] = useState('');
   const [network, setNetwork] = useState('');
+  const [modalShow, setModalShow] = React.useState(false);
 
 
   // Implement your connectWallet method here
@@ -241,7 +243,6 @@ const App = () => {
   return (
     <div className="App">
       <div className="container">
-
         <div className="header-container">
           <header>
             <div className="left">
@@ -261,6 +262,7 @@ const App = () => {
         {/* Render the input form if an account is connected */}
         {currentAccount && renderInputForm()}
 
+
         <div className="footer-container">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
           <a
@@ -269,14 +271,10 @@ const App = () => {
             target="_blank"
             rel="noreferrer"
           >BuildSpace</a>
-                <div className="button-container">
-          <button className='cta-button info-button' disabled={null} onClick={null}>
-            info 🔥
-          </button>
-          <div />
-        </div>
-  
-        </div>
+          <InfoModal show={modalShow} onHide={() => setModalShow(false)} />
+
+       
+          </div>
       </div>
     </div>
   );
