@@ -246,7 +246,7 @@ const App = () => {
           <header>
             <div className="left">
               <p className="title">🔥 Lit Name Service 🔥</p>
-              <p className="subtitle">~ Mint a Fire Domain on the Blockchain ~</p>
+              <p className="subtitle">~ Mint a Fire Domain on Polygon ~</p>
             </div>
             {/* Display a logo and wallet connection status*/}
             <div className="right">
