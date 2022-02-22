@@ -24,7 +24,9 @@ contract Domains is DomainBase {
 
 	function register(string calldata name) public payable override {
 		// Check that the name is unregistered
-		require(domains[name] == address(0));
+        if (domains[name] != address(0)) revert AlreadyRegistered();
+        if (!valid(name)) revert InvalidName(name);
+
 		uint256 _price = price(name);
 
 		// Check if enough Matic was paid in the transaction
@@ -66,6 +68,7 @@ contract Domains is DomainBase {
 		_setTokenURI(newRecordId, finalTokenUri);
 		domains[name] = msg.sender;
 
+        names[newRecordId] = name;
 		_tokenIds.increment();
 	}
 }

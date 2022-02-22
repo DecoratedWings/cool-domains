@@ -35,8 +35,11 @@ contract LaunchDomains is DomainBase {
 
 	//register for launchDomains
 	function registerLaunchDomain(string calldata name, uint256 numberOfDays) public payable override {
-		require(launchDomainNames[name] == address(0) || launchDomainStatus[msg.sender].active == false);
-		uint256 _price = price(name);
+		
+        require(launchDomainNames[name] == address(0) || launchDomainStatus[msg.sender].active == false);
+        if (!valid(name)) revert InvalidName(name);
+        
+        uint256 _price = price(name);
 
 		// Check if enough Matic was paid in the transaction
 		require(msg.value >= _price, 'Not enough Matic paid');
@@ -89,6 +92,7 @@ contract LaunchDomains is DomainBase {
 		_safeMint(msg.sender, newRecordId);
 		_setTokenURI(newRecordId, finalTokenUri);
 
+        names[newRecordId] = name;
 		_tokenIds.increment();
 	}
 

@@ -122,6 +122,26 @@
     border-radius: 20px;
     padding: 0px 2rem;
   }
+
+  .set-data-button {
+    background: -webkit-linear-gradient(left, green, lime);
+    font-size: 18px;
+    background-size: 200% 200%;
+    animation: gradient-animation 4s ease infinite;
+    margin: 20px 10px;
+    border-radius: 20px;
+    padding: 0px 2rem;
+  }
+
+  .info-button {
+    background: -webkit-linear-gradient(left, blue, skyblue);
+    font-size: 18px;
+    background-size: 200% 200%;
+    animation: gradient-animation 4s ease infinite;
+    margin: 20px 10px;
+    border-radius: 20px;
+    padding: 0px 2rem;
+  }
   
   .mint-button:disabled{
     background: #550072;

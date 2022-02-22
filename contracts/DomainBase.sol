@@ -13,14 +13,17 @@ abstract contract DomainBase is ERC721URIStorage {
 	// Magic given to us by OpenZeppelin to help us keep track of tokenIds.
 	using Counters for Counters.Counter;
 	Counters.Counter private _tokenIds;
-
 	//Top Level Domain (what the record ends with)
 	string public tld;
-	mapping(string => address) public domains;
-	// Checkout our new mapping! This will store values
-	mapping(string => string) public records;
-
 	address payable public owner;
+
+	mapping(string => address) public domains;
+	mapping(string => string) public records;
+	mapping(uint256 => string) public names;
+
+	error Unauthorized();
+	error AlreadyRegistered();
+	error InvalidName(string name);
 
 	// This function will give us the price of a domain based on length
 	//Shorter domains are more expensive!
@@ -62,12 +65,27 @@ abstract contract DomainBase is ERC721URIStorage {
 	}
 
 	function setRecord(string calldata name, string calldata record) public {
-		// Check that the owner is the transaction sender
-		require(domains[name] == msg.sender);
+		if (msg.sender != domains[name]) revert Unauthorized();
 		records[name] = record;
 	}
 
 	function getRecord(string calldata name) public view returns (string memory) {
 		return records[name];
+	}
+
+	// Add this anywhere in your contract body
+	function getAllNames() public view returns (string[] memory) {
+		console.log('Getting all names from contract');
+		string[] memory allNames = new string[](_tokenIds.current());
+		for (uint256 i = 0; i < _tokenIds.current(); i++) {
+			allNames[i] = names[i];
+			console.log('Name for token %d is %s', i, allNames[i]);
+		}
+
+		return allNames;
+	}
+
+	function valid(string calldata name) public pure returns (bool) {
+		return StringUtils.strlen(name) >= 3 && StringUtils.strlen(name) <= 10;
 	}
 }

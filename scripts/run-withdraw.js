@@ -9,7 +9,13 @@ const main = async () => {
     await launchDomainContract.deployed();
   
     console.log("Contract owner:", owner.address);
-  
+    console.log("-----------------------------")
+    console.log("CUSTOM ERRORS ARE:")
+    let txn0 = await domainContract.setRecord("bob", "Randomness");
+    await txn0.wait();
+
+    console.log("-----------------------------")
+
     // Let's be extra generous with our payment (we're paying more than required)
     let txn = await domainContract.register("a16z",  {value: hre.ethers.utils.parseEther('1234')});
     await txn.wait();
