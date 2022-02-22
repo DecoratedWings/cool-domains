@@ -12,6 +12,7 @@ import domainBaseABI from './utils/DomainBase.json';
 // Constants
 const TWITTER_HANDLE = '_buildspace';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
+const BUILDSPACE_TWITTER = `https://twitter.com/_buildspace`;
 
 // Add the domain you will be minting
 const tld = '.lit';
@@ -158,14 +159,14 @@ const App = () => {
             await window.ethereum.request({
               method: 'wallet_addEthereumChain',
               params: [
-                {	
+                {
                   chainId: '0x13881',
                   chainName: 'Polygon Mumbai Testnet',
                   rpcUrls: ['https://rpc-mumbai.maticvigil.com/'],
                   nativeCurrency: {
-                      name: "Mumbai Matic",
-                      symbol: "MATIC",
-                      decimals: 18
+                    name: "Mumbai Matic",
+                    symbol: "MATIC",
+                    decimals: 18
                   },
                   blockExplorerUrls: ["https://mumbai.polygonscan.com/"]
                 },
@@ -180,7 +181,7 @@ const App = () => {
     } else {
       // If window.ethereum is not found then MetaMask is not installed
       alert('MetaMask is not installed. Please install it to use this app: https://metamask.io/download.html');
-    } 
+    }
   }
 
   // Form to enter domain name and data
@@ -226,9 +227,6 @@ const App = () => {
           <button className='cta-button set-data-button' disabled={null} onClick={null}>
             Set data
           </button>
-          <button className='cta-button info-button' disabled={null} onClick={null}>
-            info
-          </button>
         </div>
 
       </div>
@@ -267,10 +265,17 @@ const App = () => {
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
           <a
             className="footer-text"
-            href={TWITTER_LINK}
+            href={BUILDSPACE_TWITTER}
             target="_blank"
             rel="noreferrer"
-          >{`built with @${TWITTER_HANDLE}`}</a>
+          >BuildSpace</a>
+                <div className="button-container">
+          <button className='cta-button info-button' disabled={null} onClick={null}>
+            info 🔥
+          </button>
+          <div />
+        </div>
+  
         </div>
       </div>
     </div>
