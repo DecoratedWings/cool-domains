@@ -16,12 +16,12 @@ const main = async () => {
     const address = await launchDomainContract.getAddress("fireNFT");
     console.log("Owner of domain fireDomain:", address);
 
-    let txn2_2 = await launchDomainContract.registerLaunchDomain("fireNFTMint", 3, { value: hre.ethers.utils.parseEther('0.1') });
+    let txn2_2 = await launchDomainContract.registerLaunchDomain("mintFire", 3, { value: hre.ethers.utils.parseEther('0.1') });
     await txn2_2.wait();
-    console.log("Minted lauch domain fireNFTMint.lit");
+    console.log("Minted lauch domain mintFire.lit");
 
-    const address2 = await launchDomainContract.getAddress("fireNFTMint");
-    console.log("Owner of domain fireNFTMint:", address2);
+    const address2 = await launchDomainContract.getAddress("mintFire");
+    console.log("Owner of domain mintFire:", address2);
 
     console.log('Launch domain status before delete:');
     const txn3 = await launchDomainContract.checkLaunchDomainActive();
